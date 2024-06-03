@@ -7,7 +7,7 @@ namespace SpriteKind {
 }
 scene.onHitWall(SpriteKind.handAxe, function (sprite, location) {
     if (location.getImage() == assets.tile`tree`) {
-        tiles.setTileAt(location, assets.tile`wood`)
+        tiles.setTileAt(location, assets.tile`woodTile`)
         tiles.setWallAt(location, false)
         console.log("TREE DOWN")
     }
@@ -133,12 +133,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, () => {
         if (sprites.allOfKind(SpriteKind.wood).length > 0) {
             sprites.allOfKind(SpriteKind.wood).forEach((e) => {
                 if (player2.overlapsWith(e)) {
-                    if (tiles.getTileAt(lastPos.col, lastPos.row) == assets.tile`wood`) {
+                    if (tiles.getTileAt(lastPos.col, lastPos.row) == assets.tile`woodTile`) {
                     }
                     else {
                         e.destroy()
                         invItems[1].removeElement("wood")
-                        tiles.setTileAt(lastPos, assets.tile`wood`)
+                        tiles.setTileAt(lastPos, assets.tile`woodTile`)
                     }
                 }
             })
@@ -154,7 +154,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, () => {
             axe.setPosition(0, 0)
             invItems[1].insertAt(invItems[1].length, "Axe")
         }
-        if (player2.tilemapLocation().getImage() == assets.tile`wood`) {
+        if (player2.tilemapLocation().getImage() == assets.tile`woodTile`) {
             if (invItems[1].length == 16) {
                 player2.sayText("Inventory full", 1000)
             }
